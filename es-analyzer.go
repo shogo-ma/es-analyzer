@@ -35,6 +35,11 @@ func main() {
 		os.Exit(1)
 	}
 
+	if query == "" {
+		log.Println("Error: query not found")
+		os.Exit(1)
+	}
+
 	client, err := elastic.NewClient(
 		elastic.SetURL(host),
 	)
