@@ -10,13 +10,13 @@ import (
 	elastic "gopkg.in/olivere/elastic.v5"
 )
 
-func main() {
-	var (
-		host     string
-		analyzer string
-		query    string
-	)
+var (
+	host     string
+	analyzer string
+	query    string
+)
 
+func init() {
 	// host flag
 	flag.StringVar(&host, "host", "http://localhost:9200", "host url")
 	flag.StringVar(&host, "h", "http://localhost:9200", "host url")
@@ -29,7 +29,9 @@ func main() {
 	flag.StringVar(&query, "query", "", "query")
 	flag.StringVar(&query, "q", "", "query")
 	flag.Parse()
+}
 
+func main() {
 	if host == "" {
 		log.Println("Error: host not found")
 		os.Exit(1)
